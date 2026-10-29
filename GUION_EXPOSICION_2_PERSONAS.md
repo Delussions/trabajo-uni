@@ -85,9 +85,9 @@ Si el profesor pide correr la demostración o pregunta detalles técnicos, abren
 python demo_busqueda_wan_iot.py
 ```
 
-- **Expositor 1 (en el teclado):**
-  - Presiona la tecla **`1`**: muestra cómo BFS se pinta en rojo y falla el SLA sísmico (24 ms).
-  - Presiona la tecla **`3`**: muestra cómo A\* encuentra la ruta verde óptima en 11 ms podando la mitad de la red.
+- **Expositor 1 (en el simulador):**
+  - Pulsa el botón **«Buscar Ruta BFS (Saltos)»**: muestra cómo BFS toma `R0 -> R1 -> R7` en 2 saltos pero con 24.0 ms, fallando el SLA sísmico.
+  - Pulsa el botón **«Buscar Ruta UCS (Costo g)»**: muestra cómo UCS encuentra la ruta óptima de 11.0 ms pero expande los 8/8 nodos.
+  - Pulsa el botón **«Buscar Ruta A* (g + h)»**: muestra cómo A\* encuentra la ruta óptima `R0 -> R2 -> R5 -> R7` en 11.0 ms expandiendo solo 4/8 nodos.
 - **Expositor 2 (explicando en voz alta):**
-  - Dice: *"En pantalla vemos en tiempo real las listas OPEN y CLOSED en RAM. Además, si hubiera un terremoto que corte un cable de fibra, por ejemplo haciendo clic en el enlace R2-R5, el controlador SDN recalcula automáticamente la mejor ruta de contingencia."*
-  - Si pregunta qué pasa si no hay GPS: se presiona la tecla **`G`** para mostrar cómo A\* se degrada de forma segura a UCS ($h=0$).
+  - Dice: *"En pantalla vemos los nodos expandidos en color naranja y la ruta seleccionada en verde. Además, si seleccionamos el enlace `R2 - R5` y pulsamos «Simular Falla de Enlace», al volver a pulsar «Buscar Ruta A*» vemos cómo recalcula automáticamente la ruta alternativa (`R0 -> R2 -> R1 -> R4 -> R7` con 17.5 ms)."*

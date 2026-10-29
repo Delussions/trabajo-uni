@@ -36,14 +36,12 @@ El software no requiere instalar ningún paquete externo (`pip`), funciona de fo
 python demo_busqueda_wan_iot.py
 ```
 
-### Controles Interactivos en Vivo:
-- **`1`**: Ejecuta **BFS** (muestra la falla del SLA en rojo con 24.0 ms).
-- **`2`**: Ejecuta **UCS** (halla el óptimo de 11.0 ms pero expande los 8 nodos).
-- **`3`**: Ejecuta **A\*** (halla el óptimo de 11.0 ms podando la mitad de la red).
-- **`Espacio` / `Auto-Play`**: Reproduce la animación del paquete y la expansión paso a paso.
-- **`Paso +` / `Paso -`**: Avanza o retrocede nodo por nodo en la cola de prioridad.
-- **Clic sobre cualquier enlace**: Corta el cable de fibra óptica para ver en tiempo real cómo el controlador SDN recalcula la ruta de contingencia.
-- **`G`**: Alterna la heurística GPS para demostrar cómo $A^*$ se degrada a $UCS$ ($h=0$).
+### Controles del Simulador (`SimuladorRedWANIoT`):
+- **Selectores Superiores (`Combobox`)**: Permiten elegir el nodo de **Origen ($S_0$)**, el **Destino (Meta)** y el **Enlace a romper/restaurar**.
+- **Buscar Ruta BFS (Saltos)**: Ejecuta búsqueda en anchura con `deque` y muestra cómo falla el SLA al elegir el enlace LTE de 24.0 ms.
+- **Buscar Ruta UCS (Costo $g$)**: Ejecuta búsqueda de costo uniforme con `heapq`, hallando el óptimo de 11.0 ms pero expandiendo los 8/8 nodos.
+- **Buscar Ruta A\* ($g + h$)**: Ejecuta búsqueda informada con `heapq`, hallando el óptimo de 11.0 ms con solo 4/8 nodos expandidos y 6/8 en RAM.
+- **Simular Falla de Enlace / Restaurar Enlace / Reiniciar Todo**: Permite desconectar enlaces (por ejemplo `R2 - R5`) y recalcular la ruta óptima de contingencia.
 
 ---
 
